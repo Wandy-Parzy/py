@@ -25,7 +25,7 @@ class AluminumFrameSimulationApp:
         ttk.Label(self.main_frame, text="Fracción de reciclaje (0 a 1):").grid(column=0, row=2, sticky=tk.W)
         self.reciclaje_entry = ttk.Entry(self.main_frame)
         self.reciclaje_entry.grid(column=1, row=2)
-        self.reciclaje_entry.insert(0, "0.5")
+        self.reciclaje_entry.insert(1, "5")
 
         ttk.Label(self.main_frame, text="Número de semanas a simular:").grid(column=0, row=3, sticky=tk.W)
         self.periodo_entry = ttk.Entry(self.main_frame)

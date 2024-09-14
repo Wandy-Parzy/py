@@ -12,19 +12,19 @@ def main():
         
         print("\033c", end="")  # Limpiar la pantalla
         print()
-        print("--------  DATOS --------")
+        print("--------  datos --------")
         print(f"Número de estudiantes ingresados: {estudiantes_iniciales}")
         print(f"Duración de la carrera: {duracion_carrera} años")
         print(f"Total de trimestres: {total_trimestres}")
         print("------------------------")
         print()
 
-        # Porcentajes de estudiantes que pasan, abandonan y repiten por año
+        # porciento de estudiantes que pasan, abandonan y repiten por año
         pasar_porcentajes = [0.80, 0.70, 0.60, 0.50, 0.40]
         abandonar_porcentajes = [0.10, 0.15, 0.20, 0.25, 0.30]
         repetir_porcentajes = [0.10, 0.15, 0.20, 0.25, 0.30]
 
-        # Inicialización de los estudiantes por trimestre
+        # inicar de los estudiantes por trimestre
         estudiantes = [estudiantes_iniciales] + [0] * total_trimestres
 
         for trimestre in range(total_trimestres):
@@ -36,12 +36,12 @@ def main():
             estudiantes_actuales = estudiantes[trimestre]
 
             if estudiantes_actuales > 0:
-                # Calcular el número de estudiantes que pasan, abandonan y repiten
+                # carcular el número de estudiantes que pasan, abandonan y repiten
                 pasan = round(estudiantes_actuales * pasar_porcentajes[año_actual])
                 abandonan = round(estudiantes_actuales * abandonar_porcentajes[año_actual])
                 repiten = estudiantes_actuales - pasan - abandonan
 
-                # Asegurar que no haya números negativos
+                # asegurar que no haya números negativos
                 if repiten < 0:
                     repiten = 0
                     abandonan = estudiantes_actuales - pasan
@@ -51,13 +51,13 @@ def main():
                 print(f"Estudiantes que abandonan: {abandonan}")
                 print(f"Estudiantes que repiten: {repiten}")
 
-                # Distribuir estudiantes al siguiente trimestre
+                # distribuir estudiantes al siguiente trimestre
                 if trimestre < total_trimestres - 1:
                     estudiantes[trimestre + 1] += pasan + repiten
 
             print("\n")
 
-        # Resultados al final de la carrera
+        # resultados al final de la carrera
         print("----- Resultados Finales -----")
         for año in range(duracion_carrera):
             trimestre_final = (año + 1) * trimestres_por_año - 1
